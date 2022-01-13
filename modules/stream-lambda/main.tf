@@ -12,7 +12,7 @@ module "policy" {
         "dynamodb:DescribeStream",
         "dynamodb:ListStreams"
       ]
-      resources = "${var.table_arn}/*"
+      resources = ["${var.table_arn}/*"]
     }
   ]
 }

@@ -1,5 +1,5 @@
 module "policy" {
-  count       = ("" != var.lambda_role_name) ? 1 : 0
+  count       = (null != var.lambda_role_name) ? 1 : 0
   source      = "genstackio/policy/aws"
   version     = "0.1.0"
   name_prefix = "dynamodb-stream-"

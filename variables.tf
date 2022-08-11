@@ -14,7 +14,7 @@ variable "range_key" {
   default = null
 }
 variable "attributes" {
-  default = {"id": {"type" = "S"}}
+  default = { "id" : { "type" = "S" } }
 }
 variable "ttl" {
   type    = string

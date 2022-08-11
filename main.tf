@@ -19,23 +19,23 @@ resource "aws_dynamodb_table" "table" {
   }
   dynamic "ttl" {
     iterator = v
-    for_each = ("" == var.ttl) ? {} : {ttl: var.ttl}
+    for_each = ("" == var.ttl) ? {} : { ttl : var.ttl }
     content {
-        enabled = true
-        attribute_name = v.value
+      enabled        = true
+      attribute_name = v.value
     }
   }
   dynamic "global_secondary_index" {
     iterator = v
     for_each = ("" == var.indexes) ? {} : var.indexes
     content {
-        name               = v.key
-        hash_key           = lookup(v.value, "hash_key", v.key)
-        range_key          = lookup(v.value, "range_key", null)
-        write_capacity     = lookup(v.value, "write_capacity", local.write_capacity)
-        read_capacity      = lookup(v.value, "read_capacity", local.read_capacity)
-        projection_type    = lookup(v.value, "projection_type", "ALL")
-        non_key_attributes = (length(lookup(v.value, "non_key_attributes", "")) > 0) ? split(",", lookup(v.value, "non_key_attributes", "")) : null
+      name               = v.key
+      hash_key           = lookup(v.value, "hash_key", v.key)
+      range_key          = lookup(v.value, "range_key", null)
+      write_capacity     = lookup(v.value, "write_capacity", local.write_capacity)
+      read_capacity      = lookup(v.value, "read_capacity", local.read_capacity)
+      projection_type    = lookup(v.value, "projection_type", "ALL")
+      non_key_attributes = (length(lookup(v.value, "non_key_attributes", "")) > 0) ? split(",", lookup(v.value, "non_key_attributes", "")) : null
     }
   }
 }

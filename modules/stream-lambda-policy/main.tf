@@ -4,10 +4,10 @@ module "policy" {
   version     = "0.2.0"
   name_prefix = "dynamodb-stream-"
   role_name   = var.lambda_role_name
-  statements  = [
+  statements = [
     {
-      effect    = "Allow"
-      actions   = [
+      effect = "Allow"
+      actions = [
         "dynamodb:GetRecords",
         "dynamodb:GetShardIterator",
         "dynamodb:DescribeStream",
